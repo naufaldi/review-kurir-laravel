@@ -25,6 +25,7 @@ class OngkirController extends Controller
     public function create()
     {
         //
+        return view('ongkir.create');
     }
 
     /**
@@ -36,6 +37,7 @@ class OngkirController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
