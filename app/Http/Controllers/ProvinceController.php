@@ -20,7 +20,7 @@ class ProvinceController extends Controller
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "GET",
         CURLOPT_HTTPHEADER => array(
-            "key: ".env('ONGKIR_KEY')
+            "key: " . env('ONGKIR_KEY')
         ),
         ));
 
