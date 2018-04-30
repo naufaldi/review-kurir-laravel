@@ -8,6 +8,10 @@ Review Kurir adalah portal review dan komentar dari semua orang yang ingin melay
 
 - Bill Tanthowi Jauhari
 
+## Contributor 
+
+- Barly Vallendito
+
 ## Contact
 
 info@reviewkurir.com
