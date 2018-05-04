@@ -6,8 +6,8 @@
       
     </div>
     <div class="column">
-      <form method="{{ route('ongkir.store') }}" method="POST" id="form-ongkir">
-
+      <form action="{{ route('ongkir.store') }}" method="POST" id="form-ongkir">
+        {{ csrf_field() }}
         <div class="field">
           <label class="label">Provinsi Awal</label>
           <div class="control">

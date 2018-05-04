@@ -41,16 +41,16 @@ class OngkirController extends Controller
         $curl = curl_init();
 
         Validator::make($request->all(), [
-            'kota_asal' => 'required|integer',
-            'kota_tujuan' => 'required|integer',
-            'berat' => 'required',
-            'kurir' => 'required|string'
+            'city_origin' => 'required|integer',
+            'city_destination' => 'required|integer',
+            'weight' => 'required',
+            'shipping' => 'required|string'
         ])->validate();
 
-        $kota_asal      = $request->kota_asal;
-        $kota_tujuan    = $request->kota_tujuan;
-        $berat          = $request->berat;
-        $kurir          = $request->kurir;
+        $kota_asal      = $request->city_origin;
+        $kota_tujuan    = $request->city_destination;
+        $berat          = $request->weight;
+        $kurir          = $request->shipping;
 
         $POST_DATA = "origin=".$kota_asal."&destination=".$kota_tujuan."&weight=".$berat."&courier=".$kurir;
 
