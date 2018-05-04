@@ -47,6 +47,9 @@
             <a class="navbar-item" href="#contact">
                 Contact
             </a>
+            <a class="navbar-item" href="{{ route('ongkir.create') }}">
+                Hitung Ongkir
+            </a>
             </div>
 
             <div class="navbar-end">
@@ -62,24 +65,7 @@
                     </a>
                 </p>
                 @else
-{{--                 <p class="control">
-                    <a class="button is-warning" href="{{ route('register') }}">
-                    <span class="icon">
-                        <i class="fab fa-key"></i>
-                    </span>
-                    <span>
-                        Register
-                    </span>
-                    </a>
-                </p>
-                <p class="control">
-                    <a class="button is-primary" href="{{ route('login') }}">
-                    <span class="icon">
-                        <i class="fas fa-user"></i>
-                    </span>
-                    <span>Login</span>
-                    </a>
-                </p> --}}
+
                 @endif
                 </div>
             </div>
