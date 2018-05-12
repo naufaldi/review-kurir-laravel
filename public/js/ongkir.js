@@ -997,9 +997,35 @@ var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         city_origin: 0,
         province_destination: 0,
         city_destination: 0,
-        showLoading: false
+        weight: 0,
+        shipping: null,
+        showLoading: false,
+        token: null
     },
     methods: {
+        getToken: function getToken() {
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/ongkir').then(function (response) {
+                this.token = response;
+            }).catch(function (e) {
+                console.log(e);
+            });
+        },
+        storeDataOngkir: function storeDataOngkir() {
+            this.showLoading = true;
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/ongkir', {
+                origin: this.city_origin,
+                destination: this.city_destination,
+                weight: this.weight,
+                shipping: this.shipping,
+                _token: this.token
+            }).then(function (response) {
+                console.log(response);
+                this.showLoading = false;
+            }).catch(function (response) {
+                console.log(response);
+                this.showLoading = false;
+            });
+        },
         getProvince: function getProvince() {
             var _this = this;
 
@@ -1039,6 +1065,7 @@ var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     },
     created: function created() {
         this.getProvince();
+        this.getToken();
     }
 });
 

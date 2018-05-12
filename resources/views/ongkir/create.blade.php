@@ -9,7 +9,7 @@
       <div id="loading" v-show="showLoading">
         <img src="{{ asset('assets/Pacman-1s-200px.gif') }}">
       </div>
-      <form action="{{ route('ongkir.store') }}" method="POST">
+      <form action="{{ route('ongkir.store') }}" method="POST" id="form_ongkir" v-show="form_ongkir">
         {{ csrf_field() }}
         <div class="field">
           <label class="label">Provinsi Awal</label>
@@ -58,7 +58,7 @@
         <div class="field">
           <label class="label">Berat</label>
           <div class="control">
-            <input class="input" name="weight" type="text" placeholder="Berat Barang">
+            <input class="input" name="weight" v-model="weight" type="text" placeholder="Berat Barang">
           </div>
         </div>
 
@@ -66,7 +66,7 @@
           <label class="label">Kurir</label>
           <div class="control">
             <div class="select">
-              <select name="shipping">
+              <select name="shipping" v-model="shipping">
                 <option value="jne">JNE</option>
                 <option value="pos">POS Indonesia</option>
                 <option value="tiki">TIKI</option>
@@ -76,10 +76,33 @@
         </div>
         <div class="field">
           <div class="is-right">
-            <button class="button is-primary">Hitung</button>
+            <button class="button is-primary" type="button" @click="storeDataOngkir()">Hitung</button>
           </div>
         </div>
       </form>
+      <a href="{{ route('home.ongkir.index') }}" class="button is-success">Hitung Lagi</a>
+      <table class="table is-bordered is-stripped" id="table_ongkir" v-show="table_ongkir">
+        <thead>
+          <tr>
+            <th>Kota Awal</th>
+            <th>Kota Tujuan</th>
+            <th>Kurir</th>
+            <th>Tipe Pengiriman</th>
+            <th>Biaya</th>
+            <th>Estimasi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="column">
 

@@ -14,9 +14,45 @@ var ongkir = new vue({
         city_origin : 0,
         province_destination : 0,
         city_destination : 0,
+        weight: 0,
+        shipping: null,
         showLoading: false,
+        token:null,
+        form_ongkir: true,
+        table_ongkir: false,
     },
     methods: {
+        getToken: function() {
+            axios.get('/ongkir')
+            .then(function(response){
+                this.token = response;
+            })
+            .catch(function(e){
+                console.log(e);
+            });
+        },
+        storeDataOngkir: function(){
+            this.showLoading = true;
+            axios.post('/ongkir', {
+                origin : this.city_origin,
+                destination : this.city_destination,
+                weight : this.weight,
+                shipping : this.shipping,
+                _token : this.token,
+            })
+            .then(function(response) {
+                console.log(response);
+                this.showLoading = false;
+                this.table_ongkir = true;
+                this.form_ongkir = false;
+            })
+            .catch(function(response) {
+                console.log(response);
+                this.showLoading = false;
+                this.table_ongkir = true;
+                this.form_ongkir = false;
+            });
+        },
         getProvince: function() {
             this.showLoading = true;
             axios.get('/province')
@@ -58,5 +94,6 @@ var ongkir = new vue({
     },
     created: function(){
         this.getProvince();
+        this.getToken();
     }
 });
