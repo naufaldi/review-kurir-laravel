@@ -1015,6 +1015,7 @@ var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         getCityOriginByProvince: function getCityOriginByProvince(provinsi) {
             var _this2 = this;
 
+            this.showLoading = true;
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
                 _this2.cities_origin = response.data.rajaongkir.results;
                 _this2.showLoading = false;
@@ -1026,6 +1027,7 @@ var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         getCityDestinationByProvince: function getCityDestinationByProvince(provinsi) {
             var _this3 = this;
 
+            this.showLoading = true;
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
                 _this3.cities_destination = response.data.rajaongkir.results;
                 _this3.showLoading = false;
