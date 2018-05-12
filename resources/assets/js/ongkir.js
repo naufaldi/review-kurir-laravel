@@ -46,8 +46,8 @@ var ongkir = new vue({
                 this.table_ongkir = true;
                 this.form_ongkir = false;
             })
-            .catch(function(response) {
-                console.log(response);
+            .catch(function(e) {
+                console.log(e);
                 this.showLoading = false;
                 this.table_ongkir = true;
                 this.form_ongkir = false;
