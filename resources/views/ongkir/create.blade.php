@@ -5,8 +5,11 @@
     <div class="column">
       
     </div>
-    <div class="column">
-      <form action="{{ route('ongkir.store') }}" method="POST" id="form-ongkir">
+    <div class="column" id="ongkir">
+      <div id="loading" v-show="showLoading">
+        <img src="Pacman-1s-200px.gif">
+      </div>
+      <form action="{{ route('ongkir.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="field">
           <label class="label">Provinsi Awal</label>

@@ -988,7 +988,7 @@ __webpack_require__(12);
 
 
 var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-    el: '#form-ongkir',
+    el: '#ongkir',
     data: {
         provinces: [],
         cities_origin: [],
@@ -996,16 +996,20 @@ var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         province_origin: 0,
         city_origin: 0,
         province_destination: 0,
-        city_destination: 0
+        city_destination: 0,
+        showLoading: false
     },
     methods: {
         getProvince: function getProvince() {
             var _this = this;
 
+            this.showLoading = true;
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/province').then(function (response) {
                 _this.provinces = response.data.rajaongkir.results;
+                _this.showLoading = false;
             }).catch(function (e) {
                 console.log(e);
+                _this.showLoading = false;
             });
         },
         getCityOriginByProvince: function getCityOriginByProvince(provinsi) {
@@ -1013,8 +1017,10 @@ var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
                 _this2.cities_origin = response.data.rajaongkir.results;
+                _this2.showLoading = false;
             }).catch(function (e) {
                 console.log(e);
+                _this2.showLoading = false;
             });
         },
         getCityDestinationByProvince: function getCityDestinationByProvince(provinsi) {
@@ -1022,8 +1028,10 @@ var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
                 _this3.cities_destination = response.data.rajaongkir.results;
+                _this3.showLoading = false;
             }).catch(function (e) {
                 console.log(e);
+                _this3.showLoading = false;
             });
         }
     },
