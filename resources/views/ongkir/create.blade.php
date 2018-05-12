@@ -7,7 +7,7 @@
     </div>
     <div class="column" id="ongkir">
       <div id="loading" v-show="showLoading">
-        <img src="Pacman-1s-200px.gif">
+        <img src="{{ asset('assets/Pacman-1s-200px.gif') }}">
       </div>
       <form action="{{ route('ongkir.store') }}" method="POST">
         {{ csrf_field() }}
