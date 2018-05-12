@@ -1000,7 +1000,9 @@ var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         weight: 0,
         shipping: null,
         showLoading: false,
-        token: null
+        token: null,
+        form_ongkir: true,
+        table_ongkir: false
     },
     methods: {
         getToken: function getToken() {
@@ -1021,9 +1023,13 @@ var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
             }).then(function (response) {
                 console.log(response);
                 this.showLoading = false;
-            }).catch(function (response) {
-                console.log(response);
+                this.table_ongkir = true;
+                this.form_ongkir = false;
+            }).catch(function (e) {
+                console.log(e);
                 this.showLoading = false;
+                this.table_ongkir = true;
+                this.form_ongkir = false;
             });
         },
         getProvince: function getProvince() {

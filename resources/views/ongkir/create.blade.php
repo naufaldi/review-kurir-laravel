@@ -9,7 +9,8 @@
       <div id="loading" v-show="showLoading">
         <img src="{{ asset('assets/Pacman-1s-200px.gif') }}">
       </div>
-      <form action="{{ route('ongkir.store') }}" method="POST" v-show="form_ongkir">
+      <span v-show="form_ongkir">
+      <form action="{{ route('ongkir.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="field">
           <label class="label">Provinsi Awal</label>
@@ -80,29 +81,32 @@
           </div>
         </div>
       </form>
+      </span>
       <a href="{{ route('ongkir.index') }}" class="button is-success">Hitung Lagi</a>
-      <table class="table is-bordered is-stripped" v-show="table_ongkir">
-        <thead>
-          <tr>
-            <th>Kota Awal</th>
-            <th>Kota Tujuan</th>
-            <th>Kurir</th>
-            <th>Tipe Pengiriman</th>
-            <th>Biaya</th>
-            <th>Estimasi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      <span v-show="table_ongkir">
+        <table class="table is-bordered is-stripped">
+          <thead>
+            <tr>
+              <th>Kota Awal</th>
+              <th>Kota Tujuan</th>
+              <th>Kurir</th>
+              <th>Tipe Pengiriman</th>
+              <th>Biaya</th>
+              <th>Estimasi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </span>
     </div>
     <div class="column">
 
