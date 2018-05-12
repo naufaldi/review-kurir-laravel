@@ -80,7 +80,7 @@
           </div>
         </div>
       </form>
-      <a href="{{ route('home.ongkir.index') }}" class="button is-success">Hitung Lagi</a>
+      <a href="{{ route('ongkir.index') }}" class="button is-success">Hitung Lagi</a>
       <table class="table is-bordered is-stripped" id="table_ongkir" v-show="table_ongkir">
         <thead>
           <tr>
