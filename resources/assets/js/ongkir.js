@@ -31,6 +31,7 @@ var ongkir = new vue({
         },
         getCityOriginByProvince: function( provinsi )
         {
+            this.showLoading = true;
             axios.get('/city-by-province/'+provinsi)
             .then( response => {
                 this.cities_origin = response.data.rajaongkir.results;
@@ -43,6 +44,7 @@ var ongkir = new vue({
         },
         getCityDestinationByProvince: function( provinsi )
         {
+            this.showLoading = true;
             axios.get('/city-by-province/'+provinsi)
             .then( response => {
                 this.cities_destination = response.data.rajaongkir.results;
