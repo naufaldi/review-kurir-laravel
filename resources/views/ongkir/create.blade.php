@@ -101,7 +101,7 @@
               <td>@{{ origin_details.city_name }}</td>
               <td>@{{ results[0].name }}</td>
               <td>@{{ cost.service }}</td>
-              <td>Rp. @{{ cost.cost[0].value }} Hari</td>
+              <td>Rp. @{{ cost.cost[0].value }}</td>
               <td>@{{ cost.cost[0].etd }} Hari</td>
             </tr>
           </tbody>
