@@ -4,7 +4,7 @@ require('./bootstrap')
 import vue from 'vue';
 import axios from 'axios';
 
-var ongkir = new vue({
+var ongkir_kurir = new vue({
     el: '#ongkir',
     data: {
         provinces :[],
@@ -20,33 +20,42 @@ var ongkir = new vue({
         token:null,
         form_ongkir: true,
         table_ongkir: false,
+        origin_details: [],
+        destination_details: [],
+        query: [],
+        results: [],
+        costs:[],
     },
     methods: {
         getToken: function() {
             axios.get('/ongkir')
-            .then(function(response){
-                this.token = response;
+            .then(response => {
+                this.token = response.data;
             })
-            .catch(function(e){
+            .catch(e => {
                 console.log(e);
             });
         },
         storeDataOngkir: function(){
             this.showLoading = true;
             axios.post('/ongkir', {
-                origin : this.city_origin,
-                destination : this.city_destination,
+                city_origin : this.city_origin,
+                city_destination : this.city_destination,
                 weight : this.weight,
                 shipping : this.shipping,
                 _token : this.token,
             })
-            .then(function(response) {
-                console.log(response);
+            .then(response => {
+                this.costs = response.data.rajaongkir.results[0].costs;
+                this.origin_details = response.data.rajaongkir.origin_details;
+                this.destination_details = response.data.rajaongkir.destination_details;
+                this.query = response.data.rajaongkir.query;
+                this.results = response.data.rajaongkir.results;
                 this.showLoading = false;
                 this.table_ongkir = true;
                 this.form_ongkir = false;
             })
-            .catch(function(e) {
+            .catch(e => {
                 console.log(e);
                 this.showLoading = false;
                 this.table_ongkir = true;

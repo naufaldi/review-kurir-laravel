@@ -82,8 +82,8 @@
         </div>
       </form>
       </span>
-      <a href="{{ route('ongkir.index') }}" class="button is-success">Hitung Lagi</a>
       <span v-show="table_ongkir">
+        <a href="{{ route('ongkir.create') }}" class="button is-success">Hitung Lagi</a>
         <table class="table is-bordered is-stripped">
           <thead>
             <tr>
@@ -96,13 +96,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr v-for="cost in costs">
+              <td>@{{ destination_details.city_name }}</td>
+              <td>@{{ origin_details.city_name }}</td>
+              <td>@{{ results[0].name }}</td>
+              <td>@{{ cost.service }}</td>
+              <td>Rp. @{{ cost.cost[0].value }} Hari</td>
+              <td>@{{ cost.cost[0].etd }} Hari</td>
             </tr>
           </tbody>
         </table>

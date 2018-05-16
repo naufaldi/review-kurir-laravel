@@ -987,7 +987,7 @@ __webpack_require__(12);
 
 
 
-var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+var ongkir_kurir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#ongkir',
     data: {
         provinces: [],
@@ -1002,70 +1002,83 @@ var ongkir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         showLoading: false,
         token: null,
         form_ongkir: true,
-        table_ongkir: false
+        table_ongkir: false,
+        origin_details: [],
+        destination_details: [],
+        query: [],
+        results: [],
+        costs: []
     },
     methods: {
         getToken: function getToken() {
+            var _this = this;
+
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/ongkir').then(function (response) {
-                this.token = response;
+                _this.token = response.data;
             }).catch(function (e) {
                 console.log(e);
             });
         },
         storeDataOngkir: function storeDataOngkir() {
+            var _this2 = this;
+
             this.showLoading = true;
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/ongkir', {
-                origin: this.city_origin,
-                destination: this.city_destination,
+                city_origin: this.city_origin,
+                city_destination: this.city_destination,
                 weight: this.weight,
                 shipping: this.shipping,
                 _token: this.token
             }).then(function (response) {
-                console.log(response);
-                this.showLoading = false;
-                this.table_ongkir = true;
-                this.form_ongkir = false;
+                _this2.costs = response.data.rajaongkir.results[0].costs;
+                _this2.origin_details = response.data.rajaongkir.origin_details;
+                _this2.destination_details = response.data.rajaongkir.destination_details;
+                _this2.query = response.data.rajaongkir.query;
+                _this2.results = response.data.rajaongkir.results;
+                _this2.showLoading = false;
+                _this2.table_ongkir = true;
+                _this2.form_ongkir = false;
             }).catch(function (e) {
                 console.log(e);
-                this.showLoading = false;
-                this.table_ongkir = true;
-                this.form_ongkir = false;
+                _this2.showLoading = false;
+                _this2.table_ongkir = true;
+                _this2.form_ongkir = false;
             });
         },
         getProvince: function getProvince() {
-            var _this = this;
-
-            this.showLoading = true;
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/province').then(function (response) {
-                _this.provinces = response.data.rajaongkir.results;
-                _this.showLoading = false;
-            }).catch(function (e) {
-                console.log(e);
-                _this.showLoading = false;
-            });
-        },
-        getCityOriginByProvince: function getCityOriginByProvince(provinsi) {
-            var _this2 = this;
-
-            this.showLoading = true;
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
-                _this2.cities_origin = response.data.rajaongkir.results;
-                _this2.showLoading = false;
-            }).catch(function (e) {
-                console.log(e);
-                _this2.showLoading = false;
-            });
-        },
-        getCityDestinationByProvince: function getCityDestinationByProvince(provinsi) {
             var _this3 = this;
 
             this.showLoading = true;
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
-                _this3.cities_destination = response.data.rajaongkir.results;
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/province').then(function (response) {
+                _this3.provinces = response.data.rajaongkir.results;
                 _this3.showLoading = false;
             }).catch(function (e) {
                 console.log(e);
                 _this3.showLoading = false;
+            });
+        },
+        getCityOriginByProvince: function getCityOriginByProvince(provinsi) {
+            var _this4 = this;
+
+            this.showLoading = true;
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
+                _this4.cities_origin = response.data.rajaongkir.results;
+                _this4.showLoading = false;
+            }).catch(function (e) {
+                console.log(e);
+                _this4.showLoading = false;
+            });
+        },
+        getCityDestinationByProvince: function getCityDestinationByProvince(provinsi) {
+            var _this5 = this;
+
+            this.showLoading = true;
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
+                _this5.cities_destination = response.data.rajaongkir.results;
+                _this5.showLoading = false;
+            }).catch(function (e) {
+                console.log(e);
+                _this5.showLoading = false;
             });
         }
     },
