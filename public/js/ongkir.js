@@ -1006,6 +1006,9 @@ var ongkir_kurir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         costs: []
     },
     methods: {
+        setNumeral: function setNumeral(number) {
+            return __WEBPACK_IMPORTED_MODULE_2_numeral___default()(number).format('0,0');
+        },
         getToken: function getToken() {
             var _this = this;
 

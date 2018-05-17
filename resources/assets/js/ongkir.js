@@ -28,6 +28,9 @@ var ongkir_kurir = new vue({
         costs:[],
     },
     methods: {
+        setNumeral: function( number ){
+            return numeral(number).format('0,0');
+        },
         getToken: function() {
             axios.get('/ongkir')
             .then(response => {
