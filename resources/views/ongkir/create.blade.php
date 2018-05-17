@@ -5,77 +5,103 @@
     <div class="column">
       
     </div>
-    <div class="column" id="ongkir">
+    <div class="column is-four-fifths" id="ongkir">
       <div id="loading" v-show="showLoading">
         <img src="{{ asset('assets/Pacman-1s-200px.gif') }}">
       </div>
       <span v-show="form_ongkir">
       <form action="{{ route('ongkir.store') }}" method="POST">
         {{ csrf_field() }}
-        <div class="field">
-          <label class="label">Provinsi Awal</label>
-          <div class="control">
-            <div class="select">
-              <select name="province_origin" @change="getCityOriginByProvince( province_origin )" v-model="province_origin" required>
-                <option v-for="province in provinces" v-bind:value="province.province_id">@{{ province.province }}</option>
-              </select>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Provinsi Awal</label>
+          </div>
+          <div class="field-body">
+            <div class="control">
+              <div class="select">
+                <select name="province_origin" @change="getCityOriginByProvince( province_origin )" v-model="province_origin" required>
+                  <option v-for="province in provinces" v-bind:value="province.province_id">@{{ province.province }}</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="field">
-          <label class="label">Kota Awal</label>
-          <div class="control">
-            <div class="select">
-              <select name="city_origin" v-model="city_origin" required>
-                <option v-for="city in cities_origin" v-bind:value="city.city_id">@{{ city.type+" "+city.city_name }}</option>
-              </select>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Kota Awal</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="select">
+                <select name="city_origin" v-model="city_origin" required>
+                  <option v-for="city in cities_origin" v-bind:value="city.city_id">@{{ city.type+" "+city.city_name }}</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="field">
-          <label class="label">Provinsi Tujuan</label>
-          <div class="control">
-            <div class="select">
-              <select name="province_destination" @change="getCityDestinationByProvince( province_destination )" v-model="province_destination" required>
-                <option v-for="province in provinces" v-bind:value="province.province_id"> @{{ province.province }}</option>
-              </select>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Provinsi Tujuan</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="select">
+                <select name="province_destination" @change="getCityDestinationByProvince( province_destination )" v-model="province_destination" required>
+                  <option v-for="province in provinces" v-bind:value="province.province_id"> @{{ province.province }}</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="field">
-          <label class="label">Kota Tujuan</label>
-          <div class="control">
-            <div class="select">
-              <select name="city_destination" v-model="city_destination" required>
-                <option v-for="city in cities_destination" v-bind:value="city.city_id">@{{ city.type+" "+city.city_name }}</option>
-              </select>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Kota Tujuan</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="select">
+                <select name="city_destination" v-model="city_destination" required>
+                  <option v-for="city in cities_destination" v-bind:value="city.city_id">@{{ city.type+" "+city.city_name }}</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="field">
-          <label class="label">Berat</label>
-          <div class="control">
-            <input class="input" name="weight" v-model="weight" type="text" placeholder="Per Gram" required>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Berat</label>
           </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Kurir</label>
-          <div class="control">
-            <div class="select">
-              <select name="shipping" v-model="shipping" required>
-                <option value="jne">JNE</option>
-                <option value="pos">POS Indonesia</option>
-                <option value="tiki">TIKI</option>
-              </select>
+          <div class="field-body">
+            <div class="field">
+              <p class="control">
+                <input class="input" name="weight" v-model="weight" type="text" placeholder="Per Gram" required>
+              </p>
             </div>
           </div>
         </div>
-        <div class="field">
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Kurir</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="select">
+                <select name="shipping" v-model="shipping" required>
+                  <option value="jne">JNE</option>
+                  <option value="pos">POS Indonesia</option>
+                  <option value="tiki">TIKI</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-grouped is-grouped-right">
           <div class="is-right">
             <button class="button is-primary" type="button" @click="storeDataOngkir()">Hitung</button>
           </div>
