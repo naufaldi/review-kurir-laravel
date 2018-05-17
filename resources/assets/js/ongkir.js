@@ -1,8 +1,9 @@
 
-require('./bootstrap')
 
 import vue from 'vue';
 import axios from 'axios';
+import numeral from 'numeral';
+
 
 var ongkir_kurir = new vue({
     el: '#ongkir',
