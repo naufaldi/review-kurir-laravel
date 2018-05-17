@@ -16,7 +16,7 @@
           <label class="label">Provinsi Awal</label>
           <div class="control">
             <div class="select">
-              <select name="province_origin" @click="getCityOriginByProvince( province_origin )" v-model="province_origin">
+              <select name="province_origin" @change="getCityOriginByProvince( province_origin )" v-model="province_origin">
                 <option v-for="province in provinces" v-bind:value="province.province_id">@{{ province.province }}</option>
               </select>
             </div>
@@ -38,7 +38,7 @@
           <label class="label">Provinsi Tujuan</label>
           <div class="control">
             <div class="select">
-              <select name="province_destination" @click="getCityDestinationByProvince( province_destination )" v-model="province_destination">
+              <select name="province_destination" @change="getCityDestinationByProvince( province_destination )" v-model="province_destination">
                 <option v-for="province in provinces" v-bind:value="province.province_id"> @{{ province.province }}</option>
               </select>
             </div>
