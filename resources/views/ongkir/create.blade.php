@@ -108,7 +108,7 @@
         </div>
       </form>
       </span>
-      <span v-show="table_ongkir">
+      <span v-show="table_ongkir" class="column is-three-quarters">
         <a href="{{ route('ongkir.create') }}" class="button is-success">Hitung Lagi</a>
         <table class="table is-bordered is-stripped">
           <thead>
