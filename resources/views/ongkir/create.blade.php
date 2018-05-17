@@ -121,7 +121,7 @@
               <th>Estimasi</th>
             </tr>
           </thead>
-          <tbody v-if="costs[0]">
+          <tbody v-show="costs[0]">
             <tr v-for="cost in costs">
               <td>@{{ destination_details.city_name }}</td>
               <td>@{{ origin_details.city_name }}</td>
@@ -131,7 +131,7 @@
               <td>@{{ cost.cost[0].etd }} Hari</td>
             </tr>
           </tbody>
-          <tbody v-if="!costs[0]"><strong>:( </strong> tidak ada data ongkir untuk rute anda</tbody>
+          <tbody v-show="!costs[0]"><strong>:( </strong> tidak ada data ongkir untuk rute anda</tbody>
         </table>
       </span>
     </div>
