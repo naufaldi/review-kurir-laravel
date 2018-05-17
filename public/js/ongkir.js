@@ -995,9 +995,9 @@ var ongkir_kurir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         city_destination: 0,
         weight: null,
         shipping: null,
-        showLoading: false,
+        loading: false,
         token: null,
-        form_ongkir: true,
+        form_ongkir: false,
         table_ongkir: false,
         origin_details: [],
         destination_details: [],
@@ -1006,6 +1006,18 @@ var ongkir_kurir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         costs: []
     },
     methods: {
+        showLoading: function showLoading() {
+            var form = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+            this.loading = true;
+            this.form_ongkir = form;
+        },
+        hideLoading: function hideLoading() {
+            var form = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+            this.loading = false;
+            this.form_ongkir = form;
+        },
         setNumeral: function setNumeral(number) {
             return __WEBPACK_IMPORTED_MODULE_2_numeral___default()(number).format('0,0');
         },
@@ -1021,7 +1033,7 @@ var ongkir_kurir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         storeDataOngkir: function storeDataOngkir() {
             var _this2 = this;
 
-            this.showLoading = true;
+            this.showLoading();
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/ongkir', {
                 city_origin: this.city_origin,
                 city_destination: this.city_destination,
@@ -1034,52 +1046,53 @@ var ongkir_kurir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
                 _this2.destination_details = response.data.rajaongkir.destination_details;
                 _this2.query = response.data.rajaongkir.query;
                 _this2.results = response.data.rajaongkir.results;
-                _this2.showLoading = false;
+                _this2.hideLoading(false);
                 _this2.table_ongkir = true;
-                _this2.form_ongkir = false;
             }).catch(function (e) {
                 console.log(e);
-                _this2.showLoading = false;
+                _this2.hideLoading(false);
                 _this2.table_ongkir = true;
-                _this2.form_ongkir = false;
             });
         },
         getProvince: function getProvince() {
             var _this3 = this;
 
-            this.showLoading = true;
+            this.showLoading();
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/province').then(function (response) {
                 _this3.provinces = response.data.rajaongkir.results;
-                _this3.showLoading = false;
+                _this3.hideLoading();
             }).catch(function (e) {
                 console.log(e);
-                _this3.showLoading = false;
+                _this3.hideLoading();
             });
         },
         getCityOriginByProvince: function getCityOriginByProvince(provinsi) {
             var _this4 = this;
 
-            this.showLoading = true;
+            this.showLoading();
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
                 _this4.cities_origin = response.data.rajaongkir.results;
-                _this4.showLoading = false;
+                _this4.hideLoading();
             }).catch(function (e) {
                 console.log(e);
-                _this4.showLoading = false;
+                _this4.hideLoading();
             });
         },
         getCityDestinationByProvince: function getCityDestinationByProvince(provinsi) {
             var _this5 = this;
 
-            this.showLoading = true;
+            this.showLoading();
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
                 _this5.cities_destination = response.data.rajaongkir.results;
-                _this5.showLoading = false;
+                _this5.hideLoading();
             }).catch(function (e) {
                 console.log(e);
-                _this5.showLoading = false;
+                _this5.hideLoading();
             });
         }
+    },
+    beforeCreate: function beforeCreate() {
+        this.showLoading();
     },
     created: function created() {
         this.getProvince();

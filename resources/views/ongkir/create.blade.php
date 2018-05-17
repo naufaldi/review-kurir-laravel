@@ -5,8 +5,8 @@
     <div class="column">
       
     </div>
-    <div class="column is-four-fifths" id="ongkir">
-      <div id="loading" v-show="showLoading">
+    <div class="column is-one-third" id="ongkir">
+      <div id="loading" v-show="loading">
         <img src="{{ asset('assets/Pacman-1s-200px.gif') }}">
       </div>
       <span v-show="form_ongkir">
@@ -79,7 +79,7 @@
           <div class="field-body">
             <div class="field">
               <p class="control">
-                <input class="input" name="weight" v-model="weight" type="text" placeholder="Per Gram" required>
+                <input class="input" name="weight" v-model="weight" type="text" placeholder="Per Gram" style="width:200px" required>
               </p>
             </div>
           </div>
@@ -101,7 +101,7 @@
             </div>
           </div>
         </div>
-        <div class="field is-grouped is-grouped-right">
+        <div class="field is-grouped is-grouped-centered">
           <div class="is-right">
             <button class="button is-primary" type="button" @click="storeDataOngkir()">Hitung</button>
           </div>

@@ -17,9 +17,9 @@ var ongkir_kurir = new vue({
         city_destination : 0,
         weight: null,
         shipping: null,
-        showLoading: false,
+        loading: false,
         token:null,
-        form_ongkir: true,
+        form_ongkir: false,
         table_ongkir: false,
         origin_details: [],
         destination_details: [],
@@ -28,6 +28,14 @@ var ongkir_kurir = new vue({
         costs:[],
     },
     methods: {
+        showLoading: function ( form = false ){
+            this.loading = true;
+            this.form_ongkir = form;
+        },
+        hideLoading: function ( form = true ){
+            this.loading = false;
+            this.form_ongkir = form;
+        },
         setNumeral: function( number ){
             return numeral(number).format('0,0');
         },
@@ -41,7 +49,7 @@ var ongkir_kurir = new vue({
             });
         },
         storeDataOngkir: function(){
-            this.showLoading = true;
+            this.showLoading();
             axios.post('/ongkir', {
                 city_origin : this.city_origin,
                 city_destination : this.city_destination,
@@ -55,55 +63,56 @@ var ongkir_kurir = new vue({
                 this.destination_details = response.data.rajaongkir.destination_details;
                 this.query = response.data.rajaongkir.query;
                 this.results = response.data.rajaongkir.results;
-                this.showLoading = false;
+                this.hideLoading(false);
                 this.table_ongkir = true;
-                this.form_ongkir = false;
             })
             .catch(e => {
                 console.log(e);
-                this.showLoading = false;
+                this.hideLoading(false);
                 this.table_ongkir = true;
-                this.form_ongkir = false;
             });
         },
         getProvince: function() {
-            this.showLoading = true;
+            this.showLoading();
             axios.get('/province')
             .then(response => {
                 this.provinces = response.data.rajaongkir.results;
-                this.showLoading = false;
+                this.hideLoading();
             })
             .catch(e => {
                 console.log(e);
-                this.showLoading = false;
+                this.hideLoading();
             });
         },
         getCityOriginByProvince: function( provinsi )
         {
-            this.showLoading = true;
+            this.showLoading();
             axios.get('/city-by-province/'+provinsi)
             .then( response => {
                 this.cities_origin = response.data.rajaongkir.results;
-                this.showLoading = false;
+                this.hideLoading();
             })
             .catch( e => {
                 console.log(e);
-                this.showLoading = false;
+                this.hideLoading();
             });
         },
         getCityDestinationByProvince: function( provinsi )
         {
-            this.showLoading = true;
+            this.showLoading();
             axios.get('/city-by-province/'+provinsi)
             .then( response => {
                 this.cities_destination = response.data.rajaongkir.results;
-                this.showLoading = false;
+                this.hideLoading();
             })
             .catch( e => {
                 console.log(e);
-                this.showLoading = false;
+                this.hideLoading();
             });
         }
+    },
+    beforeCreate: function() {
+        this.showLoading();
     },
     created: function(){
         this.getProvince();
