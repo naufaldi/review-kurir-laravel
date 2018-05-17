@@ -15,7 +15,7 @@ var ongkir_kurir = new vue({
         city_origin : 0,
         province_destination : 0,
         city_destination : 0,
-        weight: 0,
+        weight: null,
         shipping: null,
         showLoading: false,
         token:null,

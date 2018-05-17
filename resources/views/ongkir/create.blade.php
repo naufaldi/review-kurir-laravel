@@ -16,7 +16,7 @@
           <label class="label">Provinsi Awal</label>
           <div class="control">
             <div class="select">
-              <select name="province_origin" @change="getCityOriginByProvince( province_origin )" v-model="province_origin">
+              <select name="province_origin" @change="getCityOriginByProvince( province_origin )" v-model="province_origin" required>
                 <option v-for="province in provinces" v-bind:value="province.province_id">@{{ province.province }}</option>
               </select>
             </div>
@@ -27,7 +27,7 @@
           <label class="label">Kota Awal</label>
           <div class="control">
             <div class="select">
-              <select name="city_origin" v-model="city_origin">
+              <select name="city_origin" v-model="city_origin" required>
                 <option v-for="city in cities_origin" v-bind:value="city.city_id">@{{ city.type+" "+city.city_name }}</option>
               </select>
             </div>
@@ -38,7 +38,7 @@
           <label class="label">Provinsi Tujuan</label>
           <div class="control">
             <div class="select">
-              <select name="province_destination" @change="getCityDestinationByProvince( province_destination )" v-model="province_destination">
+              <select name="province_destination" @change="getCityDestinationByProvince( province_destination )" v-model="province_destination" required>
                 <option v-for="province in provinces" v-bind:value="province.province_id"> @{{ province.province }}</option>
               </select>
             </div>
@@ -49,7 +49,7 @@
           <label class="label">Kota Tujuan</label>
           <div class="control">
             <div class="select">
-              <select name="city_destination" v-model="city_destination">
+              <select name="city_destination" v-model="city_destination" required>
                 <option v-for="city in cities_destination" v-bind:value="city.city_id">@{{ city.type+" "+city.city_name }}</option>
               </select>
             </div>
@@ -59,7 +59,7 @@
         <div class="field">
           <label class="label">Berat</label>
           <div class="control">
-            <input class="input" name="weight" v-model="weight" type="text" placeholder="Berat Barang">
+            <input class="input" name="weight" v-model="weight" type="text" placeholder="Per Gram" required>
           </div>
         </div>
 
@@ -67,7 +67,7 @@
           <label class="label">Kurir</label>
           <div class="control">
             <div class="select">
-              <select name="shipping" v-model="shipping">
+              <select name="shipping" v-model="shipping" required>
                 <option value="jne">JNE</option>
                 <option value="pos">POS Indonesia</option>
                 <option value="tiki">TIKI</option>
