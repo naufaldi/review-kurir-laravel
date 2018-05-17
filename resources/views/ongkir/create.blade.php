@@ -28,7 +28,7 @@
           <div class="control">
             <div class="select">
               <select name="city_origin" v-model="city_origin">
-                <option v-for="city in cities_origin" v-bind:value="city.city_id">@{{ city.city_name }}</option>
+                <option v-for="city in cities_origin" v-bind:value="city.city_id">@{{ city.type." ".city.city_name }}</option>
               </select>
             </div>
           </div>
@@ -50,7 +50,7 @@
           <div class="control">
             <div class="select">
               <select name="city_destination" v-model="city_destination">
-                <option v-for="city in cities_destination" v-bind:value="city.city_id">@{{ city.city_name }}</option>
+                <option v-for="city in cities_destination" v-bind:value="city.city_id">@{{ city.type." ".city.city_name }}</option>
               </select>
             </div>
           </div>
