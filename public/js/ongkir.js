@@ -1006,6 +1006,10 @@ var ongkir_kurir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         costs: []
     },
     methods: {
+        hitungLagi: function hitungLagi() {
+            this.form_ongkir = true;
+            this.table_ongkir = false;
+        },
         showLoading: function showLoading() {
             var form = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 

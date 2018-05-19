@@ -28,6 +28,10 @@ var ongkir_kurir = new vue({
         costs:[],
     },
     methods: {
+        hitungLagi: function() {
+            this.form_ongkir = true;
+            this.table_ongkir = false;
+        },
         showLoading: function ( form = false ){
             this.loading = true;
             this.form_ongkir = form;
