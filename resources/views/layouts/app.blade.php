@@ -30,16 +30,16 @@
 
         <div id="navbarExampleTransparentExample" class="navbar-menu">
             <div class="navbar-start">
-            <a class="navbar-item" href="#home">
+            <a class="navbar-item" href="{{ url('/') }}#home">
                 Home
             </a>
-            <a class="navbar-item" href="#about">
+            <a class="navbar-item" href="{{ url('/') }}#about">
                 About
             </a>
-            <a class="navbar-item" href="#founder">
+            <a class="navbar-item" href="{{ url('/') }}#founder">
                 Founder
             </a>
-            <a class="navbar-item" href="#contact">
+            <a class="navbar-item" href="{{ url('/') }}#contact">
                 Contact
             </a>
             <a class="navbar-item" href="{{ route('ongkir.create') }}">
