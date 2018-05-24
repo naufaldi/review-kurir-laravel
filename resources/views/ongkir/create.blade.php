@@ -15,6 +15,8 @@
           </h1>
         </center>
       </div>
+      <br>
+      <br>
       <div id="loading" v-show="loading">
         <img src="{{ asset('assets/Pacman-1s-200px.gif') }}">
       </div>
