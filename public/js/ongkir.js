@@ -1003,9 +1003,22 @@ var ongkir_kurir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         destination_details: [],
         query: [],
         results: [],
-        costs: []
+        costs: [],
+        couriers: []
     },
     methods: {
+        getCouriers: function getCouriers() {
+            var _this = this;
+
+            this.showLoading();
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/get-courier').then(function (response) {
+                _this.couriers = response.data.couriers;
+                _this.hideLoading();
+            }).catch(function (e) {
+                console.log(e);
+                _this.hideLoading();
+            });
+        },
         hitungLagi: function hitungLagi() {
             this.form_ongkir = true;
             this.table_ongkir = false;
@@ -1026,16 +1039,16 @@ var ongkir_kurir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
             return __WEBPACK_IMPORTED_MODULE_2_numeral___default()(number).format('0,0');
         },
         getToken: function getToken() {
-            var _this = this;
+            var _this2 = this;
 
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/ongkir').then(function (response) {
-                _this.token = response.data;
+                _this2.token = response.data;
             }).catch(function (e) {
                 console.log(e);
             });
         },
         storeDataOngkir: function storeDataOngkir() {
-            var _this2 = this;
+            var _this3 = this;
 
             this.showLoading();
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/ongkir', {
@@ -1045,53 +1058,53 @@ var ongkir_kurir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
                 shipping: this.shipping,
                 _token: this.token
             }).then(function (response) {
-                _this2.costs = response.data.rajaongkir.results[0].costs;
-                _this2.origin_details = response.data.rajaongkir.origin_details;
-                _this2.destination_details = response.data.rajaongkir.destination_details;
-                _this2.query = response.data.rajaongkir.query;
-                _this2.results = response.data.rajaongkir.results;
-                _this2.hideLoading(false);
-                _this2.table_ongkir = true;
+                _this3.costs = response.data.rajaongkir.results[0].costs;
+                _this3.origin_details = response.data.rajaongkir.origin_details;
+                _this3.destination_details = response.data.rajaongkir.destination_details;
+                _this3.query = response.data.rajaongkir.query;
+                _this3.results = response.data.rajaongkir.results;
+                _this3.hideLoading(false);
+                _this3.table_ongkir = true;
             }).catch(function (e) {
                 console.log(e);
-                _this2.hideLoading(false);
-                _this2.table_ongkir = true;
+                _this3.hideLoading(false);
+                _this3.table_ongkir = true;
             });
         },
         getProvince: function getProvince() {
-            var _this3 = this;
-
-            this.showLoading();
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/province').then(function (response) {
-                _this3.provinces = response.data.rajaongkir.results;
-                _this3.hideLoading();
-            }).catch(function (e) {
-                console.log(e);
-                _this3.hideLoading();
-            });
-        },
-        getCityOriginByProvince: function getCityOriginByProvince(provinsi) {
             var _this4 = this;
 
             this.showLoading();
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
-                _this4.cities_origin = response.data.rajaongkir.results;
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/province').then(function (response) {
+                _this4.provinces = response.data.rajaongkir.results;
                 _this4.hideLoading();
             }).catch(function (e) {
                 console.log(e);
                 _this4.hideLoading();
             });
         },
-        getCityDestinationByProvince: function getCityDestinationByProvince(provinsi) {
+        getCityOriginByProvince: function getCityOriginByProvince(provinsi) {
             var _this5 = this;
 
             this.showLoading();
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
-                _this5.cities_destination = response.data.rajaongkir.results;
+                _this5.cities_origin = response.data.rajaongkir.results;
                 _this5.hideLoading();
             }).catch(function (e) {
                 console.log(e);
                 _this5.hideLoading();
+            });
+        },
+        getCityDestinationByProvince: function getCityDestinationByProvince(provinsi) {
+            var _this6 = this;
+
+            this.showLoading();
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/city-by-province/' + provinsi).then(function (response) {
+                _this6.cities_destination = response.data.rajaongkir.results;
+                _this6.hideLoading();
+            }).catch(function (e) {
+                console.log(e);
+                _this6.hideLoading();
             });
         }
     },
@@ -1101,6 +1114,7 @@ var ongkir_kurir = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     created: function created() {
         this.getProvince();
         this.getToken();
+        this.getCouriers();
     }
 });
 

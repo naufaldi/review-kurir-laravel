@@ -26,8 +26,21 @@ var ongkir_kurir = new vue({
         query: [],
         results: [],
         costs:[],
+        couriers: [],
     },
     methods: {
+        getCouriers: function() {
+            this.showLoading();
+            axios.get('/get-courier')
+            .then( response => {
+                this.couriers = response.data.couriers;
+                this.hideLoading();
+            })
+            .catch( e => {
+                console.log(e);
+                this.hideLoading();
+            });
+        },
         hitungLagi: function() {
             this.form_ongkir = true;
             this.table_ongkir = false;
@@ -121,5 +134,6 @@ var ongkir_kurir = new vue({
     created: function(){
         this.getProvince();
         this.getToken();
+        this.getCouriers();
     }
 });

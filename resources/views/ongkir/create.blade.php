@@ -79,8 +79,8 @@
           <div class="field-body">
             <div class="field">
               <p class="control">
-                <input class="input" name="weight" v-model="weight" type="text" placeholder="Per Gram" style="width:200px" required>
-              </p>
+                <input class="input" name="weight" v-model="weight" type="text" placeholder="Per Gram" style="width:200px" required> * Per Gram
+              </p> 
             </div>
           </div>
         </div>
@@ -93,9 +93,7 @@
             <div class="field">
               <div class="select">
                 <select name="shipping" v-model="shipping" required>
-                  <option value="jne">JNE</option>
-                  <option value="pos">POS Indonesia</option>
-                  <option value="tiki">TIKI</option>
+                  <option v-for="(courier, index) in couriers" v-bind:value="courier.slug">@{{ courier.nama }}</option>
                 </select>
               </div>
             </div>

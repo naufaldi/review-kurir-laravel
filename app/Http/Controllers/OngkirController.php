@@ -6,6 +6,7 @@ use App\Ongkir;
 use Illuminate\Http\Request;
 
 use Validator;
+use DB;
 
 class OngkirController extends Controller
 {
@@ -52,10 +53,10 @@ class OngkirController extends Controller
         $berat          = $request->weight;
         $kurir          = $request->shipping;
 
-        $POST_DATA = "origin=".$kota_asal."&destination=".$kota_tujuan."&weight=".$berat."&courier=".$kurir;
+        $POST_DATA = "origin=".$kota_asal."&destination=".$kota_tujuan."&weight=".$berat."&courier=".$kurir."&originType=city&destinationType=city";
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
+        CURLOPT_URL => env('RAJAONGKIR_URL')."/cost",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -125,5 +126,11 @@ class OngkirController extends Controller
     public function destroy(Ongkir $ongkir)
     {
         //
+    }
+
+    public function getCourier()
+    {
+        $couriers = DB::table('nama_kurir')->get();
+        return compact('couriers');
     }
 }

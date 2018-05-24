@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
-    public function getCity($url = "https://api.rajaongkir.com/starter/city")
+    public function getCity($url = "/city")
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => $url,
+        CURLOPT_URL => env('RAJAONGKIR_URL').$url,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -37,13 +37,13 @@ class CityController extends Controller
 
     public function getCityByProvince($province)
     {  
-        $url = "https://api.rajaongkir.com/starter/city?province=".$province;
+        $url = "/city?province=".$province;
         return $this->getCity($url);
     }
 
     public function getCityById($province, $id)
     {
-        $url = "https://api.rajaongkir.com/starter/city?province=".$province."&id=".$id;
+        $url = "/city?province=".$province."&id=".$id;
         return $this->getCity($url);
     }
 }

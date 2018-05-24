@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 class ProvinceController extends Controller
 {
 
-    public function getProvince($url = "https://api.rajaongkir.com/starter/province")
+    public function getProvince($url = "/province")
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => $url,
+        CURLOPT_URL => env('RAJAONGKIR_URL').$url,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -38,7 +38,7 @@ class ProvinceController extends Controller
 
     public function getProvinceById($id)
     {
-        $url = "https://api.rajaongkir.com/starter/province?id=".$id;
+        $url = "/province?id=".$id;
         return $this->getProvince($url);
     }
 }
