@@ -6,6 +6,9 @@
       
     </div>
     <div class="column is-one-third" id="ongkir">
+      <div>
+        <h1>PORTAL HITUNG ONGKIR TERLENGKAP</h1>
+      </div>
       <div id="loading" v-show="loading">
         <img src="{{ asset('assets/Pacman-1s-200px.gif') }}">
       </div>
