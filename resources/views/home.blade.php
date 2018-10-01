@@ -8,13 +8,32 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
+                    {{ Form::open(['route' =>'review.store', 'method' => 'POST']) }}
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <div class="columns">
+                       <textarea class="textarea" placeholder="e.g. Hello world"></textarea>
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <select name="kurir">
+                                @foreach($kurirs as $key => $kurir)
+                                    <option value="{{ $kurir->id }}">{{ $kurir->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="column">
+                            <button class="button is-primary">Review</button>
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                        </div>
+                    </div>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>

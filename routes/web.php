@@ -20,4 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('ongkir', 'OngkirController');
+Route::resource('review', 'ReviewController');
+
+Route::get('/callback', 'LoginController@callback')->name('callback');
 

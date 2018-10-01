@@ -65,7 +65,16 @@
                     </a>
                 </p>
                 @else
-
+                <p class="control">
+                    <a class="button is-primary" href="{{ route('login') }}">
+                        Login
+                    </a>
+                </p>   
+                <p>
+                    <a class="button is-primary" href="{{ route('register') }}">
+                        Register
+                    </a>
+                </p> 
                 @endif
                 </div>
             </div>
