@@ -5,6 +5,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="control">
                         <div class="columns">
                             <div class="column">
@@ -38,7 +39,7 @@
                         <div class="columns">
                         <div class="column">
                             <div class="select is-primary">
-                            <select name="kurir">
+                            <select name="nama_kurir_id">
                                 @foreach($kurirs as $key => $kurir)
                                     <option value="{{ $kurir->id }}">{{ $kurir->nama }}</option>
                                 @endforeach
