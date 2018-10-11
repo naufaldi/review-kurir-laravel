@@ -8,6 +8,21 @@
                     <div class="control">
                         <div class="columns">
                             <div class="column">
+                               @if($report)
+                               <div class="notification is-success">
+                                   <button class="delete"></button>
+                                   {{ $report }}
+                               </div> 
+                               @endif
+                               {{-- <div class="notification is-danger">
+                                   <button class="delete"></button>
+                               </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control">
+                        <div class="columns">
+                            <div class="column">
                                 <textarea class="textarea" placeholder="e.g. Hello world"></textarea>
                             </div>
                         </div>
@@ -31,7 +46,6 @@
                                     <option value="3">3 stars</option>
                                     <option value="4">4 stars</option>
                                     <option value="5">5 stars</option>
-                                
                                 </select>
                             </div>
                         </div>
