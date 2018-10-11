@@ -38,7 +38,8 @@ class ReviewController extends Controller
         //
         Validator::make($request->all(), [
             'content' => 'required|string',
-            'kurir' => 'required|integer'
+            'kurir' => 'required|integer',
+            'rate' => 'required|integer'
         ])->validate();
 
         Review::create($request->all());

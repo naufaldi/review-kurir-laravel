@@ -8,10 +8,10 @@
                     <div class="control">
                         <div class="columns">
                             <div class="column">
-                               @if($report)
+                               @if(session('report'))
                                <div class="notification is-success">
                                    <button class="delete"></button>
-                                   {{ $report }}
+                                   {{ session('report') }}
                                </div> 
                                @endif
                                {{-- <div class="notification is-danger">
