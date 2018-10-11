@@ -14,16 +14,23 @@
                                    {{ session('report') }}
                                </div> 
                                @endif
-                               {{-- <div class="notification is-danger">
+                               @if($errors->all())
+                               <div class="notification is-danger">
                                    <button class="delete"></button>
-                               </div> --}}
+                                   <ul>
+                                       @foreach($errors->all() as $key => $error)
+                                       <li>{{ $error }}</li>
+                                       @endforeach
+                                   </ul>
+                               </div>
+                               @endif  
                             </div>
                         </div>
                     </div>
                     <div class="control">
                         <div class="columns">
                             <div class="column">
-                                <textarea class="textarea" placeholder="e.g. Hello world"></textarea>
+                                <textarea name="content" class="textarea" placeholder="e.g. Hello world"></textarea>
                             </div>
                         </div>
                     </div>
