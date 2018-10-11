@@ -1,3 +1,4 @@
+@foreach($reviews as $key => $review)
 <div class="columns">
     <div class="column">
         <article class="media">
@@ -9,9 +10,9 @@
   <div class="media-content">
     <div class="content">
       <p>
-        <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+      <strong>{{ $review->user->name }}</strong> <small>@johnsmith</small> <small>{{ $review->created_at->toFormattedDateString() }}</small>
         <br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+        {{ $review->content }}
       </p>
     </div>
     <nav class="level is-mobile">
@@ -28,9 +29,12 @@
       </div>
     </nav>
   </div>
+  @if($review->user->id==auth()->user()->id)
   <div class="media-right">
     <button class="delete"></button>
   </div>
+  @endif
 </article>
     </div>
 </div>
+@endforeach

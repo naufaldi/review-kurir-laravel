@@ -46,7 +46,7 @@ class ReviewController extends Controller
 
         Review::create($request->all());
 
-        return redirect()->back()->with('report', 'success review');
+        return redirect()->back()->with('report', 'Your Review was successfuly sent!');
     }
 
     /**

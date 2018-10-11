@@ -58,6 +58,16 @@
                     </span>
                     <span>Home</span>
                     </a>
+                </p> 
+                <p class="control">
+                    {!! Form::open(['route' => 'logout', 'method'=>'post']) !!}
+                    <button class="button is-danger">
+                    <span class="icon">
+                        <i class="fas fa-key"></i>
+                    </span>
+                    <span>Logout</span>
+                    </button>
+                    {!! Form::close() !!}
                 </p>
                 @else
                 <p class="control">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Review;
 use App\Kurir;
 
 class HomeController extends Controller
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $kurirs = Kurir::get();
-        return view('home', compact('kurirs'));
+        $reviews = Review::orderBy('created_at', 'desc')->paginate(12);
+        return view('home', compact('kurirs', 'reviews'));
     }
 }
