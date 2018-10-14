@@ -28,41 +28,19 @@
         </a>
       </div>
     </nav>
-<article class="media">
-  <figure class="media-left">
-    <p class="image is-64x64">
-      <img src="https://bulma.io/images/placeholders/128x128.png">
-    </p>
-  </figure>
-  <div class="media-content">
-    <div class="field">
-      <p class="control">
-        <textarea class="textarea" placeholder="Add a comment..."></textarea>
-      </p>
-    </div>
-    <nav class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <a class="button is-info">Submit</a>
-        </div>
-      </div>
-      <div class="level-right">
-        <div class="level-item">
-          <label class="checkbox">
-            <input type="checkbox"> Press enter to submit
-          </label>
-        </div>
-      </div>
-    </nav>
+    {{-- comment list start --}}
+    @include('comment.index')
+    {{-- comment list end --}}
+    {{-- tag comment start --}}
+    @include('comment.create')
+    {{-- tag comment end --}}
   </div>
-</article>
-  </div>
-  @if($review->user->id==auth()->user()->id)
   <div class="media-right">
+  @if($review->user->id==auth()->user()->id)
     <button class="delete"></button>
-  </div>
   @endif
+  </div>
 </article>
     </div>
 </div>
-@endforeach
+@endforeach 

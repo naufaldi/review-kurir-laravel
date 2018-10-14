@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('ongkir', 'OngkirController');
 Route::resource('review', 'ReviewController');
+Route::resource('comment-review', 'CommentReviewController');
 
 Route::get('/callback', 'LoginController@callback')->name('callback');
 

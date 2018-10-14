@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\CommentReview;
 use Illuminate\Http\Request;
 
+use Validator;
+
 class CommentReviewController extends Controller
 {
     /**
@@ -36,6 +38,16 @@ class CommentReviewController extends Controller
     public function store(Request $request)
     {
         //
+        Validator::make($request->all(), [
+            'content' => 'required|string',
+            'user_id' => 'required|integer',
+            'review_id' => 'required|integer'
+        ])->validate();
+        
+        CommentReview::create($request->all());
+
+        return redirect()->back()->with('report_comment', 'Success Comment');
+
     }
 
     /**
