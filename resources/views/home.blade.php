@@ -4,7 +4,11 @@
 <div class="is-four-fifths">
     <div class="columns">
         <div class="column">
-          @include('form-feed.create')  
+        @if(Auth::check())
+            @include('form-feed.create')  
+        @else
+            <i>Silahkan login untuk mereview kurir anda <a href="{{ route('login') }}" class="button is-warning">Login</a></i>
+        @endif
         </div>
     </div>
     <div class="columns">

@@ -28,6 +28,7 @@
         </a>
       </div>
     </nav>
+    @if(Auth::check())
     {{-- comment list start --}}
     @include('comment.index')
     {{-- comment list end --}}
@@ -40,6 +41,7 @@
     <button class="delete"></button>
   @endif
   </div>
+    @endif
 </article>
     </div>
 </div>

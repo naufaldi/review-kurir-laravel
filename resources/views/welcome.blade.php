@@ -49,6 +49,9 @@
             </a>
             <a class="navbar-item" href="{{ route('ongkir.create') }}">
                 Hitung Ongkir
+            </a> 
+            <a class="navbar-item" href="{{ route('reviews') }}">
+                Reviews
             </a>
             </div>
 
