@@ -17,8 +17,10 @@
     </div>
   </div>
   <div class="media-right">
+    @if(Auth::check())
   @if($comment->user->id==auth()->user()->id)
     <button class="delete"></button>
+  @endif
   @endif
   </div>
 </article>

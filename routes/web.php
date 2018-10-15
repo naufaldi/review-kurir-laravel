@@ -13,6 +13,7 @@
 
 Route::get('/', 'FrontController@home')->name('front');
 Route::get('/reviews', 'FrontController@reviews')->name('reviews');
+Route::get('/reviews/{slug}', 'FrontController@showReviews')->name('show-reviews');
 
 Auth::routes();
 

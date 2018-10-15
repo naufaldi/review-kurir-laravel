@@ -13,6 +13,15 @@
       <strong>{{ $review->user->name }}</strong> <small>@johnsmith</small> <small>{{ $review->created_at->toFormattedDateString() }}</small>
         <br>
         {{ $review->content }}
+        @if(Auth::check())
+        <a href="{{ route('review.show', $review->slug) }}">
+          More..
+        </a> 
+        @else 
+          <a href="{{ route('show-reviews', $review->slug) }}">
+          More..
+          </a>
+        @endif
       </p>
     </div>
     <nav class="level is-mobile">
@@ -26,15 +35,16 @@
         <a class="level-item">
           <span class="icon is-small"><i class="fas fa-heart"></i></span>
         </a>
+         
       </div>
     </nav>
     @if(Auth::check())
-    {{-- comment list start --}}
-    @include('comment.index')
-    {{-- comment list end --}}
     {{-- tag comment start --}}
     @include('comment.create')
     {{-- tag comment end --}}
+    {{-- comment list start --}}
+    @include('comment.index')
+    {{-- comment list end --}}
   </div>
   <div class="media-right">
   @if($review->user->id==auth()->user()->id)

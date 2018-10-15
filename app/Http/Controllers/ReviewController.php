@@ -44,7 +44,16 @@ class ReviewController extends Controller
             'user_id' => 'required|integer'
         ])->validate();
 
-        Review::create($request->all());
+        $title = substr($request->content, 20);
+        $slug = str_slug($title)."-".substr(md5($title.Date('Y-m-d H:s:i')), 1, 6);
+
+        $review = new Review();
+        $review->content = $request->content;
+        $review->nama_kurir_id = $request->nama_kurir_id;
+        $review->rate = $request->rate;
+        $review->user_id = $request->user_id;
+        $review->slug = $slug;
+        $review->save();
 
         return redirect()->back()->with('report', 'Your Review was successfuly sent!');
     }
@@ -55,9 +64,11 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $review)
+    public function show($slug)
     {
         //
+        $review = Review::where('slug', $slug)->first();
+        return view('form-feed.show', compact('review'));
     }
 
     /**

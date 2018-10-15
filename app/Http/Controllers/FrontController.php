@@ -9,16 +9,25 @@ class FrontController extends Controller
 {
     //
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('reviews.redirect')->only(['reviews']);
     }
 
-    public function home(){
+    public function home()
+    {
         return view('welcome');
     }
 
-    public function reviews(){
+    public function reviews()
+    {
         $reviews = Review::orderBy('created_at', 'DESC')->paginate(12);
         return view('home', compact('reviews'));
+    }
+
+    public function showReviews($slug)
+    {
+        $review = Review::where('slug', $slug)->first();
+        return view('form-feed.show', compact('review'));
     }
 }
