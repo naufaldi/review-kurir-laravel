@@ -24,19 +24,16 @@
         @endif
       </p>
     </div>
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <a class="level-item">
-          <span class="icon is-small"><strong>{{ $review->kurir->nama }}</strong></span> -
-        </a>
-        <a class="level-item">
+    <div class="columns">
+      <div class="column is-offset-1 is-1">
+        <span class="icon is-small"><strong>{{ $review->kurir->nama }}</strong></span>
+      </div>
+      <div class="column is-2">
           @for ($i = 0; $i < $review->rate; $i++)
             <span class="icon is-small"><i class="fas fa-star"></i></span>
           @endfor
-        </a>
-         
       </div>
-    </nav>
+    </div>
     @if(Auth::check())
       @if(auth()->user()->status_register!=0)
         {{-- tag comment start --}}
