@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         $user = User::where('token_register', $token)->first();
         $user->status_register = 1;
-        $user->token_register = NULL;
+        $user->token_register = "NULL";
         $user->update();
 
         return redirect()->route('home');
