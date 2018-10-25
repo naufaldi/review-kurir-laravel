@@ -15,7 +15,7 @@ Route::get('/', 'FrontController@home')->name('front');
 Route::get('/reviews', 'FrontController@reviews')->name('reviews');
 Route::get('/reviews/{slug}', 'FrontController@showReviews')->name('show-reviews');
 
-Route::get('/user/confirmation/{token}', 'RegisterController@confirmation')->name('register-confirmation');
+Route::get('/user/confirmation/{token}', 'Auth\RegisterController@confirmation')->name('register-confirmation');
 
 Auth::routes();
 
