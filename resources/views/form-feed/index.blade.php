@@ -39,7 +39,7 @@
       </div>
     </nav>
     @if(Auth::check())
-      @if(auth()->user()->status!=0)
+      @if(auth()->user()->status_register!=0)
         {{-- tag comment start --}}
         @include('comment.create')
         {{-- tag comment end --}}

@@ -5,7 +5,7 @@
     <div class="columns">
         <div class="column">
         @if(Auth::check())
-            @if(auth()->user()->status!=0)
+            @if(auth()->user()->status_register!=0)
                 @include('form-feed.create')  
             @else 
                 <article class="message">
