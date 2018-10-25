@@ -78,4 +78,13 @@ class RegisterController extends Controller
 
         return $user;
     }
+
+    public function confirmation($token)
+    {
+        $user = User::where('token_register', $token)->first();
+        $user->status = 1;
+        $user->update();
+
+        return redirect()->route('home');
+    }
 }
