@@ -12,9 +12,7 @@ class UserController extends Controller
     public function registerConfirmation($token)
     {
         $user = User::where('token_register', $token)->first();
-        return $user;
         $user->status_register = 1;
-        $user->token_register = "NULL";
         $user->update();
 
         return redirect()->route('home');
