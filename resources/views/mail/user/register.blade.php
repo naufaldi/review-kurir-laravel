@@ -8,7 +8,7 @@ We glad to annaunce you that your register has saved and it just need one more s
 
 please click bellow button for the last step.
 
-@component('mail::button', ['url' => route('register-confirmation', $token)])
+@component('mail::button', ['url' => route('register-confirmation', $user->token_register)])
 Confirm
 @endcomponent
 
