@@ -10,7 +10,7 @@
   <div class="media-content">
     <div class="content">
       <p>
-      <strong>{{ $comment->user->name }}</strong> <small>@johnsmith</small> <small>{{ $comment->created_at->toFormattedDateString() }}</small>
+      <strong>{{ $comment->user->name }}</strong> <small><!-- this would be username --></small> <small>{{ $comment->created_at->toFormattedDateString() }}</small>
         <br>
         {{ $comment->content }}
       </p>

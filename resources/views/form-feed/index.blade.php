@@ -10,7 +10,7 @@
   <div class="media-content">
     <div class="content">
       <p>
-      <strong>{{ $review->user->name }}</strong> <small>@johnsmith</small> <small>{{ $review->created_at->toFormattedDateString() }}</small>
+      <strong>{{ $review->user->name }}</strong> <small><!-- this would be username --></small> <small>{{ $review->created_at->toFormattedDateString() }}</small>
         <br>
         {{ $review->content }}
         @if(Auth::check())
