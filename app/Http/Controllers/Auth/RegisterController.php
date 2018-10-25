@@ -39,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest')->except(['confirmation']);
     }
 
     /**
@@ -82,7 +82,6 @@ class RegisterController extends Controller
     public function confirmation($token)
     {
         $user = User::where('token_register', $token)->first();
-        return $user;
         $user->status_register = 1;
         $user->token_register = NULL;
         $user->update();
