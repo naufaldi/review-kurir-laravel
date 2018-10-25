@@ -41,14 +41,14 @@
         {{-- tag comment end --}}
       @else 
           <article class="message">
-                     <div class="message-header">
+                    <div class="message-header">
                         <p>Warning</p>
                         <button class="delete" aria-label="delete"></button>
                      </div>
                     <div class="message-body">
                         Tinggal selangkah lagi untuk mereview, silahkan klik tombol <i><strong>Confirm</strong></i> yang sudah kami kirimkan ke email anda. 
                     </div>
-                </article> 
+          </article> 
       @endif
       
     {{-- comment list start --}}

@@ -25,8 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $examplereview = Review::inRandomOrder()->first();
         $kurirs = Kurir::get();
         $reviews = Review::orderBy('created_at', 'desc')->paginate(12);
-        return view('home', compact('kurirs', 'reviews'));
+        return view('home', compact('kurirs', 'reviews', 'examplereview'));
     }
 }

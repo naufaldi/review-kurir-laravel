@@ -6,6 +6,15 @@
         <div class="column">
         @if(Auth::check())
             @if(auth()->user()->status_register!=0)
+            <article class="message is-info">
+                <div class="message-header">
+                    <p>{{ $examplereview->user->name }}</p>
+                    <button class="delete" aria-label="delete"></button>
+                </div>
+                <div class="message-body">
+                    {{ $examplereview->content }}
+                </div>
+            </article>
                 @include('form-feed.create')  
             @else 
                 <article class="message">

@@ -20,20 +20,13 @@
     <input type="hidden" name="review_id" value="{{ $review->id }}">
     <div class="field">
       <p class="control">
-        <textarea class="textarea" name="content" placeholder="Add a comment..."></textarea>
+        <textarea class="textarea" rows="2" name="content" placeholder="Add a comment here..."></textarea>
       </p>
     </div>
-    <nav class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <button class="button is-info">Comment</button>
-        </div>
-      </div>
+    <nav class="column level">
       <div class="level-right">
         <div class="level-item">
-          <label class="checkbox">
-            <input type="checkbox"> Press enter to submit
-          </label>
+          <button class="button is-info">Comment</button>
         </div>
       </div>
     </nav>

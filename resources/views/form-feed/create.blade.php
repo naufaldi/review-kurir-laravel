@@ -31,13 +31,13 @@
                     <div class="control">
                         <div class="columns">
                             <div class="column">
-                                <textarea name="content" class="textarea" placeholder="e.g. Hello world"></textarea>
+                                <textarea name="content" class="textarea" placeholder="Tulis review anda disini"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="control">
-                        <div class="columns">
-                        <div class="column">
+                        <div class="columns level">
+                        <div class="column is-1">
                             <div class="select is-primary">
                             <select name="nama_kurir_id">
                                 @foreach($kurirs as $key => $kurir)
@@ -58,7 +58,9 @@
                             </div>
                         </div>
                         <div class="column">
-                            <button class="button is-primary">Review</button>
+                            <div class="level-right">
+                                <button class="button is-primary">Review</button>
+                            </div>
                         </div>
                         </div>
                          
