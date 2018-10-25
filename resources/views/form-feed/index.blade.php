@@ -27,13 +27,12 @@
     <nav class="level is-mobile">
       <div class="level-left">
         <a class="level-item">
-          <span class="icon is-small"><i class="fas fa-reply"></i></span>
+          <span class="icon is-small"><strong>{{ $review->kurir->nama }}</strong></span> -
         </a>
         <a class="level-item">
-          <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-        </a>
-        <a class="level-item">
-          <span class="icon is-small"><i class="fas fa-heart"></i></span>
+          @for ($i = 0; $i < $review->rate; $i++)
+            <span class="icon is-small"><i class="fas fa-star"></i></span>
+          @endfor
         </a>
          
       </div>
