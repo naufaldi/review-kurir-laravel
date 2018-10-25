@@ -39,9 +39,22 @@
       </div>
     </nav>
     @if(Auth::check())
-    {{-- tag comment start --}}
-    @include('comment.create')
-    {{-- tag comment end --}}
+      @if(auth()->user()->status!=0)
+        {{-- tag comment start --}}
+        @include('comment.create')
+        {{-- tag comment end --}}
+      @else 
+          <article class="message">
+                     <div class="message-header">
+                        <p>Warning</p>
+                        <button class="delete" aria-label="delete"></button>
+                     </div>
+                    <div class="message-body">
+                        Tinggal selangkah lagi untuk mereview, silahkan klik tombol <i><strong>Confirm</strong></i> yang sudah kami kirimkan ke email anda. 
+                    </div>
+                </article> 
+      @endif
+      
     {{-- comment list start --}}
     @include('comment.index')
     {{-- comment list end --}}

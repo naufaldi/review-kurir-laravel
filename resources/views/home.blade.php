@@ -5,7 +5,19 @@
     <div class="columns">
         <div class="column">
         @if(Auth::check())
-            @include('form-feed.create')  
+            @if(auth()->user()->status!=0)
+                @include('form-feed.create')  
+            @else 
+                <article class="message">
+                     <div class="message-header">
+                        <p>Warning</p>
+                        <button class="delete" aria-label="delete"></button>
+                     </div>
+                    <div class="message-body">
+                        Tinggal selangkah lagi untuk mereview, silahkan klik tombol <i><strong>Confirm</strong></i> yang sudah kami kirimkan ke email anda. 
+                    </div>
+                </article>  
+            @endif
         @else
             <i>Silahkan login untuk mereview kurir anda <a href="{{ route('login') }}" class="button is-warning">Login</a></i>
         @endif
