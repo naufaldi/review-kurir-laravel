@@ -25,12 +25,12 @@
       </p>
     </div>
     <div class="columns">
-      <div class="column is-offset-1 is-1">
-        <span class="icon is-small"><strong>{{ $review->kurir->nama }}</strong></span>
+      <div class="column is-1">
+        <span class="tag is-info">{{ $review->kurir->nama }}</span>
       </div>
       <div class="column is-2">
           @for ($i = 0; $i < $review->rate; $i++)
-            <span class="icon is-small"><i class="fas fa-star"></i></span>
+            <span class="icon is-small has-text-warning"><i class="fas fa-star"></i></span>
           @endfor
       </div>
     </div>
